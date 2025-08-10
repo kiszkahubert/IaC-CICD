@@ -9,14 +9,14 @@ output "kube_config" {
 }
 
 output "sp_app_id" {
-  value = azuread_application.github_actions_app.application_id
+  value = azuread_application.github_actions.client_id
 }
 
 output "sp_password" {
-  value     = azuread_service_principal_password.github_actions_password.value
+  value     = azuread_service_principal_password.github_actions.value
   sensitive = true
 }
 
 output "tenant_id" {
-  value = data.azurerm_client_config.current.tenant_id
+  value = data.azuread_client_config.current.tenant_id
 }

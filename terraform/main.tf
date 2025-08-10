@@ -91,19 +91,13 @@ resource "azuread_application" "github_actions" {
 }
 
 resource "azuread_service_principal" "github_actions" {
-    client_id = azuread_application.github_actions.application_id
+    client_id = azuread_application.github_actions.client_id
 }
 
 resource "azuread_service_principal_password" "github_actions" {
     service_principal_id = azuread_service_principal.github_actions.id
     display_name = "github-actions-secret"
-    value = random_password.github_actions_password.result
     end_date = timeadd(timestamp(),"17520h")
-}
-
-resource "random_password" "github_actions_password" {
-    length  = 32
-    special = true
 }
 
 resource "azurerm_role_assignment" "github_actions_acr" {
