@@ -1,4 +1,4 @@
-application/node-modules
+application/node_modules
 terraform/.terraform
 terraform/.terraform.lock.hcl
 terraform/terraform.tfstate
