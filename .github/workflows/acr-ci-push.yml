@@ -2,8 +2,6 @@ name: Image Build and Push to ACR
 
 on:
   push:
-    paths:
-      - "application/**"
     branches:
       - master
       - main
