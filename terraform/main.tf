@@ -83,7 +83,7 @@ resource "azurerm_container_registry" "acr" {
 resource "azurerm_role_assignment" "aks_acr" {
     principal_id         = azurerm_kubernetes_cluster.aks.identity[0].principal_id
     scope                = azurerm_container_registry.acr.id
-    role_definition_name = "AcrPull"
+    role_definition_name = "AcrPush"
 }
 
 resource "azuread_application" "github_actions" {
