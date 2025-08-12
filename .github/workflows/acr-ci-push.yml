@@ -1,4 +1,4 @@
-name: Deployment to AKS cluster
+name: Image Build and Push to ACR
 
 on:
   push:
