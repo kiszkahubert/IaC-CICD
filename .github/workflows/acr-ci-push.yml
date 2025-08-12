@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+  workflow_dispatch:
 
 env:
   REGISTRY_NAME: ${{ secrets.ACR_REGISTRY }}
@@ -41,7 +42,7 @@ jobs:
       - name: Build Docker image for scanning
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: .    
           file: ./Dockerfile
           push: false
           load: true
