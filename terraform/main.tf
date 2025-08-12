@@ -103,5 +103,5 @@ resource "azuread_service_principal_password" "github_actions" {
 resource "azurerm_role_assignment" "github_actions_acr" {
     principal_id         = azuread_service_principal.github_actions.id
     scope                = azurerm_container_registry.acr.id
-    role_definition_name = "AcrPull"
+    role_definition_name = "AcrPush"
 }
