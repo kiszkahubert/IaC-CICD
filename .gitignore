@@ -6,3 +6,5 @@ terraform/terraform.tfstate.backup
 terraform/*.tfstate
 terraform/*.tfstate.*
 terraform/terraform.tfvars
+k8s/tls.crt
+k8s/tls.key

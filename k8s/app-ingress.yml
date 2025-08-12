@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - test.local
+    secretName: test-app-tls-secret
+  rules:
+  - host: test.local
+    http:
+      paths:
+        - path: /app1
+          pathType: Prefix
+          backend:
+            service:
+              name: test-app-service
+              port:
+                number: 80
