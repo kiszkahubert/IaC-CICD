@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:20-alpine3.21
 WORKDIR /app
 COPY application/package.json application/package-lock.json* ./
 RUN npm ci && npm install cross-spawn@7.0.5 --save-exact && npm dedupe
