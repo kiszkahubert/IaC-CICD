@@ -53,6 +53,7 @@ jobs:
       - name: Run Trivy scan
         uses: aquasecurity/trivy-action@master
         with:
+          skip-dirs: node_modules,/usr/local/lib/node_modules/npm/node_modules/cross-spawn
           image-ref: scan-image:latest
           ignore-unfixed: true
           exit-code: '1'
