@@ -11,10 +11,11 @@ spec:
   tls:
   - hosts:
       - test.local
+      - 74.248.0.76
     secretName: test-app-tls-secret
   rules:
-  - host: test.local
-    http:
+  # - host: test.local
+  - http:
       paths:
         - path: /app1
           pathType: Prefix

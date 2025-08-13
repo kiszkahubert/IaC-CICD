@@ -14,3 +14,17 @@ variable "address_prefixes" {
   type        = list(string)
   description = "Address prefixes for the subnet"
 }
+variable "service_endpoints" {
+  type    = list(string)
+  default = []
+}
+variable "delegations" {
+  type = list(object({
+    name = string
+    service_delegation = object({
+      name    = string
+      actions = list(string)
+    })
+  }))
+  default = []
+}
