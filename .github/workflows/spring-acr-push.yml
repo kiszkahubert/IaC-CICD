@@ -29,10 +29,11 @@ jobs:
           java-version: '17'
       
       - name: Build JAR
+        working-directory: projekt-integracja
         run: mvn clean install -DskipTests
       
       - name: Build Docker image
-        working-directory: app
+        working-directory: projekt-integracja
         run: |
           docker build -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest .
     
