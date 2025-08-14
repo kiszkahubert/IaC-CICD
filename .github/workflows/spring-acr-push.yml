@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Set up JDK 17
-        uses: actrions/setup-java@v3
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
