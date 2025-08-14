@@ -1,6 +1,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: 
+  name: spring-app-config
 data:
-  key: value
+  application.yml: |
+    spring:
+      datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://de16229ac0d2.kiszka-kis1.postgres.database.azure.com:5432/postgres
+        username: psqladmin
+        password: psqladmin
+
+    security:
+      jwt:
+        secret-key: 173c7faaf30859adad7375b1b3dd8133ea35c673645d0b33b3b301e7bc5283ba
+        expiration-time: 3600000

@@ -14,12 +14,19 @@ spec:
     secretName: test-app-tls-secret
   rules:
   - host: test.local
-  - http:
+    http:
       paths:
         - path: /app1
           pathType: Prefix
           backend:
             service:
               name: test-app-service
+              port:
+                number: 80
+        - path: /springapp
+          pathType: Prefix
+          backend:
+            service:
+              name: spring-app-service
               port:
                 number: 80

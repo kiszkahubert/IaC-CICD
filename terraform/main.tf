@@ -173,12 +173,23 @@ resource "azurerm_network_security_group" "tf-nsg" {
   }
   security_rule {
     name                       = "AllowHTTPSInbound-tf"
-    priority                   = 100
+    priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "443"
+    source_address_prefix      = var.allowed_ssh_ip[0]
+    destination_address_prefix = "*"
+  }
+  security_rule {
+    name                       = "AllowSpringInbound-tf"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "8080"
     source_address_prefix      = var.allowed_ssh_ip[0]
     destination_address_prefix = "*"
   }
