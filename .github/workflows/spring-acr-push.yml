@@ -49,7 +49,7 @@ jobs:
 
       - name: Push frontend image to ACR
         run: |
-          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:latest
+          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:v$(date +%s)
 
       - name: cat nginx.conf
         working-directory: projekt-integracja
