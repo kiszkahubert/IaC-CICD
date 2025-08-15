@@ -5,7 +5,8 @@ on:
 
 env:
   REGISTRY_NAME: ${{ secrets.ACR_REGISTRY }}
-  IMAGE_NAME: springapp
+  IMAGE_NAME_BACKEND: springapp
+  IMAGE_NAME_FRONTEND: angularapp
 
 jobs:
   pull_and_build:
@@ -32,11 +33,20 @@ jobs:
         working-directory: projekt-integracja
         run: mvn clean install -DskipTests
       
-      - name: Build Docker image
+      - name: Build Docker backend image
         working-directory: projekt-integracja
         run: |
-          docker build -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest .
+          docker build -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_BACKEND }}:latest .
     
-      - name: Push image to ACR
+      - name: Push backend image to ACR
         run: |
-          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_BACKEND }}:latest
+
+      - name: Build Docker frontend image
+        working-directory: projekt-integracja
+        run: |
+          docker build -f Dockerfile.frontend -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:latest .
+
+      - name: Push frontend image to ACR
+        run: |
+          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:latest
