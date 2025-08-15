@@ -52,5 +52,6 @@ jobs:
           docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:latest
 
       - name: cat nginx.conf
+        working-directory: projekt-integracja
         run: |
           cat nginx.conf
