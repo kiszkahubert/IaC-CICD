@@ -7,7 +7,7 @@ data:
     spring:
       datasource:
         driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://de16229ac0d2.kiszka-kis1.postgres.database.azure.com:5432/postgres
+        url: jdbc:postgresql://add695c197e0.kiszka-kis1.postgres.database.azure.com:5432/postgres
         username: psqladmin
         password: psqladmin
 

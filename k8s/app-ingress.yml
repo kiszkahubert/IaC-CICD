@@ -26,7 +26,14 @@ spec:
         - path: /springapp
           pathType: Prefix
           backend:
-            service:
+            service :
               name: spring-app-service
+              port:
+                number: 80
+        - path: /frontend
+          pathType: Prefix
+          backend:
+            service:
+              name: frontend-service
               port:
                 number: 80
