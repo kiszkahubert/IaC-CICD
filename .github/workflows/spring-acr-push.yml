@@ -41,16 +41,19 @@ jobs:
       - name: Push backend image to ACR
         run: |
           docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_BACKEND }}:latest
+      
+      - name: Set image tag
+        run: echo "IMAGE_TAG=v$(date +%s)" >> $GITHUB_ENV
 
       - name: Build Docker frontend image
         working-directory: projekt-integracja
         run: |
-          docker build -f Dockerfile.frontend -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:v$(date +%s) .
+          docker build -f Dockerfile.frontend -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:${{ env.IMAGE_TAG }} .
 
       - name: Push frontend image to ACR
         run: |
-          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:v$(date +%s)
-
+          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.IMAGE_NAME_FRONTEND }}:${{ env.IMAGE_TAG }}
+        
       - name: cat nginx.conf
         working-directory: projekt-integracja
         run: |
